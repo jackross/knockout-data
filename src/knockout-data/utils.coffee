@@ -1,10 +1,4 @@
 
-kod.new_key = ->
-	return md5("#{Date.now()}#{Math.random()}")
-
-kod.get_endpoint = (model, action, _id, params) ->
-	return md5("#{model} #{action} #{_id} #{JSON.stringify(params)}")
-
 kod.get_url = (model, action, _id) ->
 	url = ""
 	controller = @tabelize(model)

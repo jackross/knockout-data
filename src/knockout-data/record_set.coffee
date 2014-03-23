@@ -16,10 +16,6 @@ class kod.RecordSet
 			return kod.tabelize(@model())
 		, @)
 
-		@rs_id = ko.computed(->
-			return md5("#{@rs_type} #{@model()} #{@action()} #{@_id()} #{@params}")
-		, @)
-
 		@rest_url = ko.computed(->
 			@params() # manually add dependency
 			return kod.get_url(@model(), @action(), @_id())
