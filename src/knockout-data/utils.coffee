@@ -83,6 +83,11 @@ kod.cache_contains = (model, id) ->
 	else
 		return false
 
+kod.observableParams = (params, ratelimit=50) ->
+	return ko.computed(->
+		return ko.toJS(params)
+	).extend(rateLimit: { timeout: ratelimit, method: "notifyAtFixedRate" })
+
 kod.load_initial_recordset = (rs) ->
 	if rs.rs_type is 'single'
 		rs.observable(new Models[rs.model()])
